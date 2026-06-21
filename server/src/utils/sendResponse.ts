@@ -3,15 +3,15 @@ import type { Response } from "express";
 
 type responseBody = {
   success: boolean;
-  data?: any;
+  data?: unknown;
   message?: string;
 };
 
-const sendResponse = (
+const sendResponse = <T = null>(
   res: Response,
   statusCode: number,
   message: string,
-  data = null,
+  data: T | null = null,
 ) => {
   const responseBody: responseBody = {
     success: true,

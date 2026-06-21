@@ -7,6 +7,7 @@ const envSchema = z.object({
   MONGODB_URI: z.string(),
   NODE_ENV: z.string(),
   PINO_LOG_LEVEL: z.string(),
+  JWT_SECRET: z.string(),
 });
 
 const env = envSchema.safeParse(process.env);

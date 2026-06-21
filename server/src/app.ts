@@ -3,7 +3,8 @@ import type { Express } from "express";
 import env from "./config/config.js";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import { errorHandler } from "./middlewares/errorHandler.js";
+import { errorHandler } from "./middlewares/errorHandler.middleware.js";
+import authRoutes from "./routes/auth.route.js";
 
 const createApp = () => {
   const app: Express = express();
@@ -18,6 +19,8 @@ const createApp = () => {
   app.get("/health", (_req, res) => {
     res.send("Server running perfectly");
   });
+
+  app.use("/api/auth", authRoutes);
 
   app.use(errorHandler);
 
