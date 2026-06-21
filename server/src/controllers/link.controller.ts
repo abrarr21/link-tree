@@ -73,6 +73,19 @@ class LinkController {
       next(error);
     }
   };
+
+  incrementClick = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      await linkService.incrementClick(req.params.linkId as string);
+      sendResponse(res, StatusCodes.OK, "Click recorded");
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export const linkController = new LinkController();

@@ -69,6 +69,16 @@ class LinkService {
       links: linkDetails,
     };
   }
+
+  async incrementClick(linkId: string): Promise<LinkDocument> {
+    const link = await linkModel.findById(linkId);
+    if (!link) {
+      throw new ApiError(StatusCodes.NOT_FOUND, "Link not found");
+    }
+
+    link.clickCount += 1;
+    return await link.save();
+  }
 }
 
 export const linkService = new LinkService();

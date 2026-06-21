@@ -17,4 +17,6 @@ router.get("/:user", linkController.getByUser);
 
 router.get("/:user/analytics", authenticate, linkController.getAnalytics);
 
+router.patch("/:linkId/click", linkController.incrementClick);
+
 export default router;
