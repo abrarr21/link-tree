@@ -79,6 +79,22 @@ class LinkService {
     link.clickCount += 1;
     return await link.save();
   }
+
+  async deleteLink(linkId: string, authUserId: string): Promise<void> {
+    const link = await linkModel.findById(linkId);
+    if (!link) {
+      throw new ApiError(StatusCodes.NOT_FOUND, "Link not found");
+    }
+
+    if (link.user.toString() !== authUserId) {
+      throw new ApiError(
+        StatusCodes.FORBIDDEN,
+        "You are not authorized to delete this",
+      );
+    }
+
+    await linkDAO.deleteLink(linkId);
+  }
 }
 
 export const linkService = new LinkService();

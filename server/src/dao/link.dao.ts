@@ -26,6 +26,11 @@ class LinkDAO {
       .findByIdAndUpdate(id, { $inc: { clickCount: 1 } }, { new: true })
       .exec()) as LinkDocument | null;
   }
+
+  // delete link
+  async deleteLink(linkId: string): Promise<LinkDocument | null> {
+    return await linkModel.findByIdAndDelete(linkId).exec();
+  }
 }
 
 export const linkDAO = new LinkDAO();

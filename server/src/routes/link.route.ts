@@ -19,4 +19,6 @@ router.get("/:user/analytics", authenticate, linkController.getAnalytics);
 
 router.patch("/:linkId/click", linkController.incrementClick);
 
+router.delete("/:linkId", authenticate, linkController.deleteLink);
+
 export default router;

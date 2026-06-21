@@ -86,6 +86,19 @@ class LinkController {
       next(error);
     }
   };
+
+  deleteLink = async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      await linkService.deleteLink(req.params.linkId as string, req.user!.id);
+      sendResponse(res, StatusCodes.OK, "Link deleted successfully");
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export const linkController = new LinkController();
