@@ -32,6 +32,9 @@ importers:
       mongoose:
         specifier: ^9.7.1
         version: 9.7.1
+      morgan:
+        specifier: ^1.11.0
+        version: 1.11.0
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -63,9 +66,6 @@ importers:
       '@types/node':
         specifier: ^26.0.0
         version: 26.0.0
-      morgan:
-        specifier: ^1.11.0
-        version: 1.11.0
 
 packages:
 

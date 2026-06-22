@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "build": "cd ../client && pnpm install && pnpm build && cd ../server && tsc",
+    "build": "cd ../client && pnpm install --prod=false && pnpm build && cd ../server && pnpm install --prod=false && tsc",
     "start": "node dist/server.js",
     "dev": "tsx watch src/server.ts"
   },
@@ -18,10 +18,10 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^26.0.0",
-    "morgan": "^1.11.0"
+    "@types/node": "^26.0.0"
   },
   "dependencies": {
+    "morgan": "^1.11.0",
     "@types/bcrypt": "^6.0.0",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
